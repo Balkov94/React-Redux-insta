@@ -1,0 +1,41 @@
+
+.header{
+     height: 10vh;
+     width: 70%;
+     display: flex;
+     flex-direction: row; 
+     justify-content: center;
+     align-items: center;
+     margin-bottom: 26px;
+     position: fixed;
+     top: 0px;
+     /* z-index stories carousel is 1000 bc of the ready library component carousel */
+     z-index: 1001; 
+     
+
+}
+.headerNavWrapper{
+     margin:auto;
+     width: 70%;
+     height: 10vh;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     align-items: center;
+     background-color: rgb(226, 139, 33);
+     position: inherit;
+     .icons_cotainer{
+          display: flex;
+          background-color: aquamarine;
+          width: 188px;
+          justify-content: space-between;
+          left: 6px;
+       
+     }
+}
+
+.logo{
+     width: 100px;
+     height: 25px;
+     filter: white(100%);
+}

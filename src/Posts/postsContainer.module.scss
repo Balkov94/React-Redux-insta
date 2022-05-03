@@ -1,0 +1,135 @@
+.postsContainer{
+     background-color: rgb(91, 143, 237);
+     position: absolute;
+     top:35vh;
+     width: 66%;
+     min-height: 400px;
+     max-height: fit-content;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+}
+// postCard
+.postCard{
+      width: 100%; 
+      min-height: fit-content;
+      max-height: fit-content;   
+     //  height: 800px;
+      background-color: rgb(73, 6, 135);
+      display: flex;
+      flex-direction: column;
+      padding-top: 18px;
+      padding-bottom: 18px;
+      .postCard_header{
+           width: 100%;
+           display: flex;
+           flex-direction: row;
+           position: relative;
+           background-color: black;
+           height: 46px;
+           justify-content: center;
+           align-items: center;
+           .postCard_header_prof_img{
+               position: absolute;
+               left: 8px;
+               img{
+                    width: 35px;
+                    border-radius: 50px;
+               }
+           }
+           .postCard_header_prof_username{
+               position: absolute;
+               top: 12px;
+               left: 60px;
+           }
+           .postCard_header_icon_options{
+               position: absolute;
+               top: 12px;
+               right: 20px;
+           }
+      }
+     //  main photo
+     .postCard_img_container{
+          width: 100%;
+          height: fit-content;
+          img{
+               width: 100%;
+          }
+     }
+     // icons (like/comment/sent
+     .postCard_icons_container{
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          height: 30px;
+          background-color: cadetblue;
+          align-items: center;
+          position: relative;
+          .postCard_icons_like_com_shere{
+             padding-left: 6px;
+             display: flex;
+             flex-direction: row;
+             width: 90px;
+             justify-content: space-between;
+               
+          }
+          .postCard_icons_bookmark{
+               position: absolute;
+               right: 6px;
+          }
+     }
+     .postCard_likes_container{
+          width: 100%;
+          height: 24px;
+          background-color: antiquewhite;
+          p{
+               padding-left: 60px;
+          }
+     }
+     .postCard_img_text_container{
+          width: 100%;
+          height: 36px;
+     }  
+     .postCard_write_coment {
+          width: 100%;
+          height: 38px;
+          display: flex;
+          background-color: coral;
+          flex-direction: row;
+          .postCard_emogi_Icon_container{
+               width: 30px;
+               display: flex;
+               justify-self: center;
+               align-items: center;
+               padding-left: 6px;
+               
+          }
+          .postCard_write_field{
+               display: flex;
+               align-items: center;
+               width: 100%;
+               margin-left: 16px;
+               input[type=text]{
+                    width: 80%;
+                    border: none;
+                    background-color: black;
+               }
+          }
+          .postCard_post_button_container{
+               display: flex;
+               justify-content: end;
+               justify-items: center;
+               align-items: center;
+               button{
+                    border: none;
+                    background-color: transparent;
+                    cursor: pointer;
+               }
+          }
+     }
+
+     
+
+
+}
