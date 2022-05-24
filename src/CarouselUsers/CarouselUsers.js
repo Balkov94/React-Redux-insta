@@ -8,14 +8,14 @@ class CarouselUsers extends Component {
      constructor(props) {
           super(props);
           this.state = {
-
+              reduxState: this.props.currUserFollowing
           };
      }
 
      render() {
           return (
                <div className={Style.carousel_container}>
-                      <CarouselTest/> 
+                      <CarouselTest currUserFollowing={this.state.reduxState}/> 
                </div>
           );
      }

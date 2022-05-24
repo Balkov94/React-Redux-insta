@@ -9,6 +9,8 @@ import TextField from '@mui/material/TextField';
 import IconMenu from './IconMenu';
 // router
 import { Routes, Route, Link } from "react-router-dom";
+//redux
+import { useSelector } from 'react-redux';
 
 
 export default function Header() {
@@ -24,6 +26,9 @@ export default function Header() {
           marginRight: "6px",
      };
 
+      // !!!Get data from Redux gloval state -> slice userData _______________
+     const userProfPicture = useSelector(state => state.userData.profPicture);
+
      return (
           <div className={Style.header}>
                <div className={Style.headerNavWrapper}>
@@ -37,8 +42,8 @@ export default function Header() {
                          <AddCircleOutlineIcon style={iconsMargins} />
                          <FavoriteBorderIcon style={iconsMargins} />
                          <span style={{ display: "inline" }}>
-                              <Avatar onClick={handleMenu} alt="Remy Sharp"
-                                   src="/static/images/avatar/1.jpg"
+                              <Avatar onClick={handleMenu} alt="profile picture"
+                                   src={userProfPicture}
                                    sx={{ display: "inline-block", width: 24, height: 24, }}
                               />
                          </span>

@@ -8,8 +8,8 @@ export default function Asside() {
      return (
           <div className={Style.asside_container}>
                {/* Curr user card x1 */}
-
                <UserProfCard />
+               
                {/* Suggestions For You line - > See all */}
                <div className={Style.suggestion_text_line}>
                     <p>Suggestions For You</p>

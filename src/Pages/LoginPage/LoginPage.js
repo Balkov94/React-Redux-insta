@@ -32,9 +32,10 @@ export default function LoginPage() {
                          </div>
                          <>
                               {logOrSign ?
-                                   <LoginDiv handleLogOrSign={changeLogOrSign} 
+                                   <LoginDiv handleLogOrSign={changeLogOrSign}
                                    />
-                                   : <SignInDiv handleLogOrSign={changeLogOrSign} />}
+                                   : <SignInDiv handleLogOrSign={changeLogOrSign} />
+                              }
                          </>
                     </div>
                </>

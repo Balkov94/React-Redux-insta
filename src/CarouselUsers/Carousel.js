@@ -1,13 +1,36 @@
-import React, { Component } from 'react';
+import React, { Component, useLayoutEffect } from 'react';
 // import Style from './carouselUsers.module.scss';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import StoryCards from './StoryCards';
+//redux
+import { useSelector } from 'react-redux';
+
 
 class CarouselTest extends Component {
      constructor(props) {
           super(props);
-          this.state = {}
+          this.state = {
+               reduxState: this.props.currUserFollowing,
+               stories:null
+          }
+          // all usersdata from localStorage
+          let allUsersData = JSON.parse(localStorage.getItem("users"));
+          let storyCardsList = this.state.reduxState.map(id => { //following - usersID
+
+               let currFollowing = allUsersData.find(e => e.userID == id);
+               return(
+                    <StoryCards key={id}
+                    profPicture={currFollowing.profPicture}
+                    username={currFollowing.username}
+                    />
+               )
+             
+          });
+          console.log(storyCardsList);
+          this.setState({...this.state,stories:storyCardsList})
+          console.log('State');
+          console.log(this.state);
      }
      render() {
           const responsive = {
@@ -30,7 +53,7 @@ class CarouselTest extends Component {
                }
           };
           return (
-               <Carousel 
+               <Carousel
                     swipeable={true}
                     draggable={true}
                     showDots={false}
@@ -48,15 +71,15 @@ class CarouselTest extends Component {
                     deviceType={this.props.deviceType}
                     dotListClass="custom-dot-list-style"
                     itemClass="carousel-item-padding-40-px">
-                         {/* put usersCards */}
+                    {/* put usersCards */}
+                    {/* <StoryCards/>
                     <StoryCards/>
-                    <StoryCards/>
-                    <StoryCards/>
-                    <StoryCards/>
-                    <StoryCards/>
-                    <StoryCards/>
-                    <StoryCards/>
-                    <StoryCards/>
+                    <StoryCards/> */}
+                    {this.state.stories.foreach(e=>{return e})}
+                    
+
+
+
                </Carousel>
           );
      }

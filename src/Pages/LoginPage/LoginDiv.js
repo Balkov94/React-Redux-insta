@@ -16,7 +16,17 @@ export default function LoginDiv(props) {
      useEffect(() => {
           getUsers()
                .then(res => {
-                    setUsers(res)
+                    //get data from local storage??? for new registered users
+                    let localStorageUsers = []
+                    if (localStorage.getItem("users") !== null) {
+                         localStorageUsers = JSON.parse(localStorage.getItem("users"));
+                    }
+                    if (res.length < localStorageUsers.length) {
+                         setUsers(localStorageUsers)
+                    }
+                    else {
+                         setUsers(res)
+                    }
                })
      }, [])
 
@@ -32,14 +42,31 @@ export default function LoginDiv(props) {
                setPassword(e.target.value);
           }
      }
-     // redux state / slice userData
+     //!!!!!!!!!!!!!!!!! redux state / slice userData__________________________
      const currUserName = useSelector(state => state.userData.username);
+     
      const dispatch = useDispatch();
-
      function login() {
+
           if (users.some(e => e.username == username && e.password == password)) {
-               alert("Successful login")
-               dispatch({ type: "LOGIN", payload: username })
+               //curr logged user data
+               let currUserData = users.find(e => e.username == username && e.password == password);
+               alert(`Successful login ${currUserName}`)
+
+                dispatch({
+                    type: "LOGIN",
+                    payload: {
+                         userID: currUserData.userID,
+                         mobile: currUserData.mobile,
+                         name: currUserData.name,
+                         username: currUserData.username,
+                         password: currUserData.password,
+                         posts: currUserData.posts,
+                         followers: currUserData.followers,
+                         following: currUserData.following,
+                         profPicture: currUserData.profPicture
+                    }
+               })
 
           }
           else {
