@@ -4,33 +4,13 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import StoryCards from './StoryCards';
 //redux
-import { useSelector } from 'react-redux';
-
 
 class CarouselTest extends Component {
      constructor(props) {
           super(props);
           this.state = {
                reduxState: this.props.currUserFollowing,
-               stories:null
           }
-          // all usersdata from localStorage
-          let allUsersData = JSON.parse(localStorage.getItem("users"));
-          let storyCardsList = this.state.reduxState.map(id => { //following - usersID
-
-               let currFollowing = allUsersData.find(e => e.userID == id);
-               return(
-                    <StoryCards key={id}
-                    profPicture={currFollowing.profPicture}
-                    username={currFollowing.username}
-                    />
-               )
-             
-          });
-          console.log(storyCardsList);
-          this.setState({...this.state,stories:storyCardsList})
-          console.log('State');
-          console.log(this.state);
      }
      render() {
           const responsive = {
@@ -52,6 +32,15 @@ class CarouselTest extends Component {
                     items: 6
                }
           };
+          // !!!!!!!! HARD FIX -> make STORIES for print in carousel
+          let allStories;
+          if(this.props.stories!=null){
+               allStories=this.props.stories.map(e=>
+                    <StoryCards key={e.userID} username={e.username} profPicture={e.profPicture}/>
+               )
+               console.log(allStories)
+          }
+   
           return (
                <Carousel
                     swipeable={true}
@@ -70,16 +59,13 @@ class CarouselTest extends Component {
                     removeArrowOnDeviceType={["tablet", "mobile"]}
                     deviceType={this.props.deviceType}
                     dotListClass="custom-dot-list-style"
-                    itemClass="carousel-item-padding-40-px">
+                    itemClass="carousel-item-padding-40-px"
+                    stories={this.props.stories}>
                     {/* put usersCards */}
-                    {/* <StoryCards/>
-                    <StoryCards/>
-                    <StoryCards/> */}
-                    {this.state.stories.foreach(e=>{return e})}
-                    
-
-
-
+                    {/*!!!show all sotires or <sotrycard> ->carousel didnt't work with null elemenets */}
+                    {(allStories ? allStories :<StoryCards />)}
+                   
+                  
                </Carousel>
           );
      }
